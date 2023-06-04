@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-parcelize'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.projetoallmoviesfinal'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.projetoallmoviesfinal"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+ext{
+    koin_version = '3.1.6'
+    okhttp_version = '4.2.1'
+    retrofit_version = '2.9.0'
+    stetho_okhttp3_version = "1.5.1"
+    gson_version = "2.8.7"
+    adapter_version = "2.3.0"
+    lifecycle_version = "2.3.0"
+    logging_interceptor_version = "4.2.1"
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.databinding:baseLibrary:3.2.0-alpha11'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //glide (Referencias de imagens)
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+
+    // Retrofit (Chamadas http)
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$adapter_version"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stetho_okhttp3_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+    // LiveData (Dado Vivo)
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:1.3.0"
+
+    // Koin (Biblioteca injeção de ependencia)
+    implementation "io.insert-koin:koin-android:3.1.6"
+    implementation "io.insert-koin:koin-core:3.1.6"
+    implementation "io.insert-koin:koin-android-compat:3.1.6"
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.7'
+
+    //ShimmerFrameLayout
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    testImplementation "io.mockk:mockk:1.9.3"
+    testImplementation 'org.robolectric:robolectric:4.3'
+
+
+}
